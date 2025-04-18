@@ -4,14 +4,13 @@ from datetime import datetime
 import os
 import re
 from functools import wraps
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-API_KEYS = ['rayhan']
-# Constants and configurations
-RAPIDAPI_KEY = "f635b2115amsh097a1839162450cp1159d6jsnc89aca8eaeff"
-RAPIDAPI_HOST = "the-sneaker-database.p.rapidapi.com"
-BASE_URL = "https://the-sneaker-database.p.rapidapi.com/search"
-
+API_KEYS = os.getenv('API_KEYS',).split(',')
+RAPIDAPI_KEY = os.getenv('RAPIDAPI_KEY')
+RAPIDAPI_HOST = os.getenv('RAPIDAPI_HOST')
+BASE_URL = os.getenv('BASE_URL')
 
 def get_headers():
     return {
