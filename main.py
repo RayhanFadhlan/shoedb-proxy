@@ -166,5 +166,12 @@ def search_all_pages():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({"status": "healthy"}), 200
+@app.route('/api/health', methods=['GET'])
+def api_health():
+    return jsonify({"status": "healthy"}), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
